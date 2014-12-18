@@ -1,0 +1,25 @@
+<div ui-view>
+    <div>
+        <div>
+            <h3>{{data.question}}</h3>
+            <!-- use hightlight js-->
+            <pre><code class="javascript">{{data.snippet}}</code></pre>
+            <!-- Button group -->
+            <div class="row" ng-repeat="alt in data.alt track by $index">
+                <div class="col-lg-12">
+                    <button class="btn btn-default" ng-click="answer($index)">
+                        {{alt.alternative}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </div>
+
+    <div ng-if="data.message" class="say-correct">
+        <div class="reveal-animation">
+            <p>{{usermessage}}</p>
+        </div>
+    </div>
+
+</div>
