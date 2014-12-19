@@ -51,7 +51,6 @@
         <!-- personal preference: github theme -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 
-
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
@@ -67,11 +66,19 @@
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+        <script src="bower_components/angular-ui-bootstrap/src/progressbar/progressbar.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/services/jsquestions.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/jsquiz.js"></script>
+        <script src="scripts/controllers/dir.js"></script>
+        <!-- directives are defined here -->
+        <script src="scripts/directives/example.js"></script>
+
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 
@@ -83,7 +90,9 @@
             })
         hljs.initHighlightingOnLoad();
         </script>
-        <script src="scripts/services/jsqestions.js"></script>
+        <script src="scripts/services/jsquestions.js"></script>
+        <script src="scripts/controllers/dir.js"></script>
+        <script src="scripts/directives/example.js"></script>
         <!-- endbuild -->
     </body>
 </html>

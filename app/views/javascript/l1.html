@@ -1,25 +1,45 @@
-<div ui-view>
-    <div>
-        <div>
-            <h3>{{data.question}}</h3>
+<div ui-view class="container">
+    <div ng-if="!restart">
+        <h2>Start a javascript quiz</h2>
+        <p>Let's start a new javascript quiz, this is level one</p>
+        <button class="btn btn-default" ng-click="startQuiz()">Start your javascript quiz</button>
+    </div>
+    <div ng-if="restart">
+        <div class="row">
+            <div class="col-lg-12">Your score {{points}}</div>
+            <!-- Progress bar indicating where is the user exactly -->
+
+            <div class="col-lg-12">
+                <h2>Progress</h2>
+                <progressbar value="points" max="200" animate="true">{{points}} pts</progressbar>
+            </div>
+        </div>
+        <div class="row" ng-repeat="slide in slides">
+            <h3>{{slide.question}}</h3>
             <!-- use hightlight js-->
-            <pre><code class="javascript">{{data.snippet}}</code></pre>
+            <pre>
+                <code class="javascript">{{slide.snippet}}</code>
+            </pre>
             <!-- Button group -->
-            <div class="row" ng-repeat="alt in data.alt track by $index">
+            <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
                 <div class="col-lg-12">
                     <button class="btn btn-default" ng-click="answer($index)">
                         {{alt.alternative}}
                     </button>
                 </div>
             </div>
+            the answer is -> {{slide.answer}}
+            <div ng-if="correctAnswer">
+                <p>
+                    ++ {{slide.points}}, {{usermessage}}
+                </p>
+            </div>
         </div>
         <hr/>
-    </div>
-
-    <div ng-if="data.message" class="say-correct">
-        <div class="reveal-animation">
-            <p>{{usermessage}}</p>
+        <div ng-if="usermessage" class="say-correct">
+            <div class="reveal-animation">
+                <p>{{usermessage.message}}</p>
+            </div>
         </div>
     </div>
-
 </div>

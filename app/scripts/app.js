@@ -17,12 +17,11 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch',
         'ui.router',
+        'myDirectives',
+        'ui.bootstrap'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
-
-        //
         // For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/jsquiz");
         //
@@ -40,6 +39,11 @@ angular
                 url: "jsquiz",
                 templateUrl: "views/javascript/l1.html",
                 controller: "JsquizCtrl"
+            })
+            .state('directive-practice', {
+                url: 'dir',
+                templateUrl: 'views/directive-practice.html',
+                controller: 'DirCtrl'
             });
 
     });
