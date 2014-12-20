@@ -64,6 +64,7 @@
 
                 $scope.usermessage = 'Correct';
             } else {
+
                 $scope.usermessage = 'Wrong';
             }
             // check if not excelling the ttal
