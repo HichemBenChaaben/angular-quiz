@@ -19,17 +19,24 @@ angular
         'ngSanitize',
         'ui.router',
         'myDirectives',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'hljs'
     ])
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider, hljsServiceProvider) {
+        // highlightjs configuration
+        hljsServiceProvider.setOptions({
+            // replace tab with 4 spaces
+            tabReplace: '  ',
+            languages: 'javascript'
+          });
+
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/jsquiz");
+        $urlRouterProvider.otherwise('');
         //
         // Now set up the states
         $stateProvider.
         state('home', {
             url: "/",
-            templateUrl: "views/main.html"
         })
             .state('quiz', {
                 url: 'quizz',

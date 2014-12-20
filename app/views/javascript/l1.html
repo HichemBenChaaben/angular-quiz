@@ -11,22 +11,46 @@
     <div ng-if="restart">
         <div class="row">
             <!-- Progress bar indicating where is the user exactly -->
-            <div class="col-lg-8">
-                <h2>Progress</h2>
-                <progressbar value="points" max="200" animate="true">{{points}} pts</progressbar>
+            <div class="col-xs-8">
+                <h6>Progress</h6>
+                <progressbar type="success" value="progress" max="3" animate="true">{{points}} pts</progressbar>
             </div>
-            <div class="col-lg-4">Your score {{points}}</div>
+            <div class="col-xs-4 bg-info">Your score {{points}}</div>
+            <div class="col-xs-7">
+                <p>Choose editor style - {{stylesheet}}</p>
+                <form>
+                    <select ng-model="stylesheet" class="form-control">
+                        <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">{{stylesheet}}</option>
+                    </select>
+                </form>
+            </div>
         </div>
-        <div class="row text-center" ng-repeat="slide in slides" ng-animate="displayslides">
-            <h3>{{slide.question}}</h3>
+        <div class="row text-center center-block" ng-repeat="slide in slides" ng-animate="displayslides">
+            <div class="col-lg-12 bg-primary xs-padding">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h5>
+                            <span class="glyphicon glyphicon-question"></span>
+                            <span>
+                                {{slide.question}}
+                            </span>
+                        </h5>
+                    </div>
+                    <div class="col-xs-4">
+                        <span style="font-size:24px" class="glyphicon glyphicon-time"></span>
+                        <span><b>{{count}}</b></span>
+
+                    </div>
+                </div>
+            </div>
             <!-- use hightlight js-->
-            <pre>
-                <code class="javascript">{{slide.snippet}}</code>
-            </pre>
+            <div hljs no-escape include="'views/'+slide.snippetUrl" language="javascript">
+                <div ng-include="'views/'+slide.snippetUrl"></div>
+            </div>
             <!-- Button group -->
             <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
-                <div class="col-lg-12">
-                    <button class="btn btn-lg btn-default" ng-click="answer($index)">
+                <div class="col-lg-12 group-btn-answer">
+                    <button ng-disabled="{{answered}}" class="btn btn-lg btn-default btn-block" ng-click="answer($index)">
                         {{alt.alternative}}
                     </button>
                 </div>
@@ -35,7 +59,8 @@
             <!-- Display the badass message -->
             <div ng-if="correctAnswer" ng-class="correctAnswer?correct:incorrect" ng-animate="usermessage" class="usermessage correct">
                 <p>
-                    {{usermessage}}, <b>+{{slide.points}}!</b>
+                    <span class="glyphicon glyphicon-ok-circle"></span>
+                    <span>{{usermessage}} <b>+{{slide.points}} points!</b></span>
                 </p>
             </div>
 
@@ -46,6 +71,7 @@
                 <p>{{usermessage.message}}</p>
             </div>
         </div>
-
+        <!-- change css style of the editor -->
+        <link rel="stylesheet" href="bower_components/highlightjs/styles/{{stylesheet}}.css">
     </div>
 </div>

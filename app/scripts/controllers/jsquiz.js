@@ -11,20 +11,40 @@
      */
 
     angular.module('quizApp')
-        .controller('JsquizCtrl', ['$scope', '$http', '$timeout', 'jsquestions', getData]);
+        .controller('JsquizCtrl', ['$scope', '$http', '$timeout', '$interval', 'jsquestions', getData]);
 
     // hoisted function which is tie up to the controller
-    function getData($scope, $http, $timeout, jsquestions) {
+    function getData($scope, $http, $timeout, $interval, jsquestions) {
 
         var qtotal = 0, // total number of slides
             self = this,
             qindex = 0,
             correctAnswer = false;
 
-
+        $scope.progress = 0;
         $scope.restart = false;
         $scope.points = 0;
         $scope.qtotal = qtotal;
+        $scope.count = 30;
+
+        // function to set the time to answer to a question
+        var countDown = $interval(function() {
+            if($scope.count>0) {
+                $scope.count--;
+            } else {
+                clearInterval(countDown);
+            }
+        },1000);
+
+        countDown;
+
+        // when you click on a button answered became true.
+        // it will became false later when the slide change
+        $scope.answered = false;
+
+        $scope.displayProgress = function() {
+            $scope.progress = qindex /$scope.qtotal;
+        };
 
         $scope.startQuiz = function () {
             getData();
@@ -38,6 +58,7 @@
                 $scope.questions = res.data;
                 $scope.slides = $scope.questions[qindex]; // set to the slide by default
                 qtotal = $scope.questions.length;
+                $scope.qtotal = qtotal;
             });
         }
 
@@ -45,8 +66,13 @@
             $scope.correctAnswer = true;
             $scope.usermessage = 'bravo!!!';
             $scope.addpoints(arg);
+            $scope.displayProgress;
+            // disable the button
+            $scope.answered = true;
             $timeout(function() {
                 $scope.correctAnswer = false;
+                $scope.answered = false;
+                $scope.progress++;
             }, 3000);
         };
 
@@ -58,13 +84,10 @@
         };
 
         $scope.answer = function(arg, element) {
-
             if (arg === +$scope.questions[qindex].slide.answer) {
                 $scope.displayCorrect($scope.questions[qindex].slide.points);
-
                 $scope.usermessage = 'Correct';
             } else {
-
                 $scope.usermessage = 'Wrong';
             }
             // check if not excelling the ttal
@@ -77,6 +100,7 @@
                 }, 5000);
 
             } else {
+                // you finished the quiz questions
                 $scope.restart = true;
                 console.log('Move on to the next quiz');
             }

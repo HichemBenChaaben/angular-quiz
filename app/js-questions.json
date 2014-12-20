@@ -1,41 +1,44 @@
 [{
     "slide": {
-        "question": "This is question 1",
+        "question": "What is the output of the following console.log()?",
         "snippet": "function()\n{\n var a = 10;if(a > 5) {\na = 7;}alert(a); if(a > 5) {\na = 7;}alert(a); }",
+        "snippetUrl": "snippets/l1/1.html",
         "tip": "The answer might be the 3, bet on it negga",
         "points": "10",
         "answer": "1",
         "alt": [{
-            "alternative": " alter 1 qustion 1"
+            "alternative": "Undefined"
         }, {
-            "alternative": " alter 2 question 1"
+            "alternative": "Nan"
         }, {
-            "alternative": " alter 3 question 1"
+            "alternative": "7"
         }, {
-            "alternative": " alter 4 question 1"
+            "alternative": "Null"
         }]
     }
 }, {
     "slide": {
-        "question": "This is question 2",
+        "question": "What is the output of the following console.log()?",
         "snippet": " <p class=\"shitty-class shitty-code\">lorem powq dpouqw dqwj dpqwpd poq</p>",
+        "snippetUrl": "snippets/l1/2.html",
         "tip": "The answer might be the 3, bet on it negga",
         "points": "10",
         "answer": "2",
         "alt": [{
-            "alternative": " alter 1 qustion 2"
+            "alternative": "Nan"
         }, {
-            "alternative": " alter 2 question 2"
+            "alternative": "Undefined"
         }, {
-            "alternative": " alter 3 question 2"
+            "alternative": "Runtime error"
         }, {
-            "alternative": " alter 4 question 2"
+            "alternative": "4"
         }]
     }
 }, {
     "slide": {
-        "question": "this is question 3",
+        "question": "What is the output of the following console.log()?",
         "snippet": " <p class=\"shitty-class shitty-code\">qwdoi q woidh oqwdouqw gdougqw odg qod</p>",
+        "snippetUrl": "snippets/l1/3.html",
         "tip": "The answer might be the 3, bet on it negga",
         "points": "10",
         "answer": "1",
