@@ -65,13 +65,18 @@
 
             <!-- Button group -->
             <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
-                <div class="col-lg-12 group-btn-answer">
-                    <button ng-disabled="{{answered}}" class="btn btn-lg btn-default btn-block" ng-click="answer($index)">
+                <!-- Group of questions -->
+                <div ng-hide="wrongA" class="col-lg-12 group-btn-answer">
+                    <button ng-diabled="answered" class="btn btn-default btn-block" ng-click="answer($index)" ng-class="{correctA: correctA}">
                         {{alt.alternative}}
                     </button>
                 </div>
+                <!-- group of answers -->
+                <div ng-if="wrongA && slide.answer==$index" class="bg-danger wrong-answer">
+                    <h4>The answer is :</h4>
+                    <div>{{alt.alternative}}</div>
+                </div>
             </div>
-
             <!-- Display the badass message -->
             <div ng-if="correctAnswer" ng-class="correctAnswer?correct:incorrect" ng-animate="usermessage" class="usermessage correct">
                 <p>

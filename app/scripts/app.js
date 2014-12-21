@@ -44,6 +44,10 @@ angular
             url: 'quizz',
             templateUrl: 'views/quiz-list.html'
         })
+        .state('stats', {
+            url: 'stats',
+            templateUrl: 'views/quiz-stats.html'
+        })
         .state('quiz-javascript', {
             url: 'jsquiz',
             templateUrl: "views/javascript/l1.html",

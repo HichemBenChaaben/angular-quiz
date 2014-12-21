@@ -60,29 +60,22 @@
   .jumbotron
     border-bottom: 0
 
-// Animate the slides on the screen
-
-.displayslides
+// what is happening when user clicks on wrong answer
+.wrong-answer
+  font-weight: bold
+  padding: 20px
+  transition: 0.1s ease-in-out all
+  z-index: 9999
   opacity: 1
-  -webkit-animation: fadeIn ease-in 1
-  -moz-animation: fadeIn ease-in 1
-  animation: fadeIn ease-in 1
   &.ng-enter
+    background-color: white
     opacity: 0
-    -webkit-animation: fadeIn ease-in 1
-    -moz-animation: fadeIn ease-in 1
-    animation: fadeIn ease-in 1
-  &.ng-leave
+    &.ng-enter-active
+      opacity: 0.3
+  &.ng-leave.ng-leave-active
     opacity: 0
 
 // Animate the user message, the badass effect !
-
-.correct
-  background-color: green
-
-.incorrect
-  background-color: red
-
 .usermessage
   -moz-transform: scale(1.3)
   -webkit-transform: scale(1.3)
@@ -147,3 +140,6 @@ button
   &:disabled
     border: 0
     outline: 0
+
+button.correctA
+  background-color: red !important
