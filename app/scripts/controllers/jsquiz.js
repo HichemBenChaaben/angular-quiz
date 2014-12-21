@@ -76,6 +76,7 @@
             });
         }
 
+        // display the badass message
         $scope.displayCorrect = function(arg) {
             $scope.correctAnswer = true;
             $scope.usermessage = 'bravo!!!';
@@ -97,6 +98,7 @@
             $scope.points += arg;
         };
 
+        // Handle is an answer is correct or wrong
         $scope.answer = function(arg, element) {
             if (arg === +$scope.questions[qindex].slide.answer) {
                 $scope.displayCorrect($scope.questions[qindex].slide.points);
