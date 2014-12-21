@@ -13,14 +13,16 @@
             <!-- Progress bar indicating where is the user exactly -->
             <div class="col-xs-8">
                 <h6>Progress</h6>
-                <progressbar type="success" value="progress" max="3" animate="true">{{points}} pts</progressbar>
+                <progressbar type="success" value="progress" max="{{}}" animate="true">{{points}} pts</progressbar>
             </div>
             <div class="col-xs-4 bg-info">Your score {{points}}</div>
             <div class="col-xs-7">
-                <p>Choose editor style - {{stylesheet}}</p>
+            <!-- Choosing the style to include in our editor -->
                 <form>
                     <select ng-model="stylesheet" class="form-control">
-                        <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">{{stylesheet}}</option>
+                        <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">
+                            {{stylesheet}}
+                        </option>
                     </select>
                 </form>
             </div>
@@ -37,8 +39,10 @@
                         </h5>
                     </div>
                     <div class="col-xs-4">
+                        <button class="btn btn-default" ng-click="pauseCounter()">Pause the counter</button>
+                        <button class="btn btn-default" ng-click="startCounter()">Start the counter</button>
                         <span style="font-size:24px" class="glyphicon glyphicon-time"></span>
-                        <span><b>{{count}}</b></span>
+                        <span><b>{{counter}}</b></span>
 
                     </div>
                 </div>

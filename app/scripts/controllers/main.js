@@ -63,5 +63,4 @@
             ];
             $scope.stylesheet = 'monokai_sublime';
         });
-
 })();

@@ -23,7 +23,7 @@ angular
         'hljs'
     ])
     .config(function($stateProvider, $urlRouterProvider, hljsServiceProvider) {
-        // highlightjs configuration
+        // headghlightjs configuration
         hljsServiceProvider.setOptions({
             // replace tab with 4 spaces
             tabReplace: '  ',
@@ -31,26 +31,27 @@ angular
           });
 
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('');
+        $urlRouterProvider.otherwise('/');
         //
         // Now set up the states
         $stateProvider.
-        state('home', {
-            url: "/",
+        state('jsquiz', {
+            url: '/',
+            controller: 'MainCtrl',
+            templateUrl: 'views/main.html'
         })
-            .state('quiz', {
-                url: 'quizz',
-                templateUrl: 'views/quiz-list.html'
-            })
-            .state('quiz-javascript', {
-                url: "jsquiz",
-                templateUrl: "views/javascript/l1.html",
-                controller: "JsquizCtrl"
-            })
-            .state('directive-practice', {
-                url: 'dir',
-                templateUrl: 'views/directive-practice.html',
-                controller: 'DirCtrl'
-            });
-
+        .state('quiz', {
+            url: 'quizz',
+            templateUrl: 'views/quiz-list.html'
+        })
+        .state('quiz-javascript', {
+            url: 'jsquiz',
+            templateUrl: "views/javascript/l1.html",
+            controller: "JsquizCtrl"
+        })
+        .state('directive-practice', {
+            url: 'dir',
+            templateUrl: 'views/directive-practice.html',
+            controller: 'DirCtrl'
+        });
     });

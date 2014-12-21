@@ -11,7 +11,8 @@
      */
 
     angular.module('quizApp')
-        .controller('JsquizCtrl', ['$scope', '$http', '$timeout', '$interval', 'jsquestions', getData]);
+        .controller('JsquizCtrl',
+            ['$scope', '$http', '$timeout', '$interval', 'jsquestions', getData]);
 
     // hoisted function which is tie up to the controller
     function getData($scope, $http, $timeout, $interval, jsquestions) {
@@ -25,14 +26,27 @@
         $scope.restart = false;
         $scope.points = 0;
         $scope.qtotal = qtotal;
-        $scope.count = 30;
+        $scope.counter = 5;
+        // pause the counter
+        $scope.isPaused = false;
 
+        // pause the counter
+        $scope.startCounter = function() {
+            $scope.isPaused = false;
+        };
+        // start the counter
+        $scope.pauseCounter = function() {
+            $scope.isPaused = true;
+        };
         // function to set the time to answer to a question
         var countDown = $interval(function() {
-            if($scope.count>0) {
-                $scope.count--;
+            if($scope.counter>0) {
+                // is paused means we need to pause the app for a while
+                if (!$scope.isPaused) {
+                    $scope.counter--;
+                }
             } else {
-                clearInterval(countDown);
+                $scope.counter = 5;
             }
         },1000);
 
