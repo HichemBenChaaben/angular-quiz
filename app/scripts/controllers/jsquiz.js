@@ -17,15 +17,14 @@
     // hoisted function which is tie up to the controller
     function getData($scope, $http, $timeout, $interval, jsquestions) {
 
-        var qtotal = 0, // total number of slides
-            self = this,
+        var self = this,
             qindex = 0,
             correctAnswer = false;
 
         $scope.progress = 0;
         $scope.restart = false;
         $scope.points = 0;
-        $scope.qtotal = qtotal;
+        $scope.qtotal = 0;
         $scope.counter = 5;
         // pause the counter
         $scope.isPaused = false;
@@ -66,6 +65,7 @@
             console.log("button clicked");
         };
 
+        // Function which return a promess
         function getData() {
             // get the data from the json object
             jsquestions.then(function(res) {
