@@ -1,7 +1,7 @@
 <div ui-view class="container-fluid">
     <div ng-if="!restart" class="row text-center">
         <div class="col-lg-12">
-            <h2>The javascript quiz</h2>
+            <h2>Javascript quiz</h2>
             <p>Let's start a new javascript quiz, this is level one</p>
             <button class="btn btn-lg btn-primary" ng-click="startQuiz()">
                 Start your javascript quiz
@@ -10,40 +10,40 @@
     </div>
     <div ng-if="restart">
         <div class="row">
-            <!-- Progress bar indicating where is the user exactly -->
-            <div class="col-xs-8">
-                <h6>Progress</h6>
-                <progressbar type="success" value="progress" max="qtotal" animate="true">{{points}} pts</progressbar>
-            </div>
-            <div class="col-xs-4 bg-info">Your score {{points}}</div>
-            <div class="col-xs-7">
-            <!-- Choosing the style to include in our editor -->
-                <form>
-                    <select ng-model="stylesheet" class="form-control">
-                        <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">
-                            {{stylesheet}}
-                        </option>
-                    </select>
-                </form>
+            <div class="col-xs-12">
+                <div class="row">
+                    <!-- Progress bar indicating where is the user exactly -->
+                    <div class="col-xs-8">
+                        <h4>The javascript quiz</h4>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="" ="col-xs-4 bg-info">
+                            <span>Question {{qindex+1}}/{{qtotal}}</span>
+                            <span>Your score {{points}}</span>
+                            <span>{{usermessage}}</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <progressbar type="success"
+                                     value="progress"
+                                     max="qtotal"
+                                     animate="true">
+                                        {{points}} pts
+                        </progressbar>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row text-center center-block" ng-repeat="slide in slides" ng-animate="displayslides">
             <div class="col-lg-12 bg-primary xs-padding">
                 <div class="row">
-                    <div class="col-xs-8">
-                        <h5>
+                    <div class="col-xs-12">
+                        <h3>
                             <span class="glyphicon glyphicon-question"></span>
                             <span>
                                 {{slide.question}}
                             </span>
-                        </h5>
-                    </div>
-                    <div class="col-xs-4">
-                        <button class="btn btn-default" ng-click="pauseCounter()">Pause the counter</button>
-                        <button class="btn btn-default" ng-click="startCounter()">Start the counter</button>
-                        <span style="font-size:24px" class="glyphicon glyphicon-time"></span>
-                        <span><b>{{counter}}</b></span>
-
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -51,6 +51,18 @@
             <div hljs no-escape include="'views/'+slide.snippetUrl" language="javascript">
                 <div ng-include="'views/'+slide.snippetUrl"></div>
             </div>
+
+            <!-- Choosing the style to include in our editor
+            <form>
+                <select ng-model="stylesheet" class="form-control">
+                    <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">
+                        {{stylesheet}}
+                    </option>
+                </select>
+            </form>
+
+            End choosing editor style -->
+
             <!-- Button group -->
             <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
                 <div class="col-lg-12 group-btn-answer">
