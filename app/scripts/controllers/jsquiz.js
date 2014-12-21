@@ -40,7 +40,7 @@
         };
         // function to set the time to answer to a question
         var countDown = $interval(function() {
-            if($scope.counter>0) {
+            if($scope.counter > 0) {
                 // is paused means we need to pause the app for a while
                 if (!$scope.isPaused) {
                     $scope.counter--;
@@ -57,7 +57,7 @@
         $scope.answered = false;
 
         $scope.displayProgress = function() {
-            $scope.progress = qindex /$scope.qtotal;
+            $scope.progress = qindex / $scope.qtotal;
         };
 
         $scope.startQuiz = function () {
@@ -72,8 +72,7 @@
             jsquestions.then(function(res) {
                 $scope.questions = res.data;
                 $scope.slides = $scope.questions[qindex]; // set to the slide by default
-                qtotal = $scope.questions.length;
-                $scope.qtotal = qtotal;
+                $scope.qtotal = $scope.questions.length;
             });
         }
 
@@ -108,7 +107,7 @@
                 $scope.usermessage = 'Wrong';
             }
             // check if not excelling the ttal
-            if (qindex < qtotal - 1) {
+            if (qindex < $scope.qtotal - 1) {
                 $timeout(function() {
                     qindex++;
                     $scope.slides = $scope.questions[qindex];
