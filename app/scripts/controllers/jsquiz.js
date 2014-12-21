@@ -17,6 +17,7 @@
     // hoisted function which is tie up to the controller
     function getData($scope, $http, $timeout, $interval, jsquestions) {
 
+        // Scope vars
         var self = this,
             qindex = 0,
             correctAnswer = false;
