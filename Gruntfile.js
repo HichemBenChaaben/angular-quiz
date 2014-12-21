@@ -44,6 +44,10 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
+      sass: {
+        files: ['<%= yeoman.app %>/sass/**/*.sass'],
+        tasks: ['sass:dist', 'newer:copy:styles', 'autoprefixer']
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -63,6 +67,16 @@ module.exports = function (grunt) {
       }
     },
 
+    sass: {
+        dist: {
+             options: {
+               style: 'compressed'
+             },
+             files: {
+               '.tmp/styles/quiz.css': '<%= yeoman.app %>/sass/quiz.sass',
+             }
+        }
+    },
     // The actual grunt server settings
     connect: {
       options: {
@@ -364,6 +378,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'sass:dist',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -388,6 +403,7 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'sass:dist',
     'autoprefixer',
     'concat',
     'ngAnnotate',
