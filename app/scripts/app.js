@@ -35,18 +35,15 @@ angular
         //
         // Now set up the states
         $stateProvider.
+        state('home', {
+            url: '/',
+            controller: 'MainCtrl',
+            templateUrl: 'views/main.html'
+        }).
         state('jsquiz', {
             url: '/',
             controller: 'MainCtrl',
             templateUrl: 'views/main.html'
-        })
-        .state('quiz', {
-            url: 'quizz',
-            templateUrl: 'views/quiz-list.html'
-        })
-        .state('stats', {
-            url: 'stats',
-            templateUrl: 'views/quiz-stats.html'
         })
         .state('quiz-javascript', {
             url: 'jsquiz',
