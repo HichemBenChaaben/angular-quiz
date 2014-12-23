@@ -1,3 +1,4 @@
+@import animations
 // Everything but the jumbotron gets side spacing for mobile first views
 .header, .marketing, .footer
   padding-left: 15px
@@ -66,13 +67,16 @@
     z-index: 999
     opacity: 1
     width: 500px
-    top: 40%
+    top: 10%
     left: 50%
     position: absolute
     transform: translate(-50%, -50%)
     border-radius: 2px
     background-color: white
-    border: 3px solid red
+    border: 5px solid rgba(229,65,48,0.4)
+    .btn
+      border-radius: 0
+      padding: 10px 20px
   &.ng-enter
     background-color: white
     opacity: 0
@@ -81,13 +85,14 @@
   &.ng-leave.ng-leave-active
     opacity: 0
   .overlay
-    background-color: white
+    background-color: gray
     display: block
     height: 100%
     left: 0
-    opacity: 0.5
+    opacity: 0.2
     overflow: hidden
     position: absolute
+    z-index: 22
     top: 0
     transform: translate(0, 0)
     width: 100%
@@ -218,6 +223,18 @@ button
   background-color: #5cb85c !important
   color: white !important
   border: 1px solid #4cae4c !important
+  -webkit-animation-name: shake
+  animation-name: shake !important
+  -webkit-animation-duration: 1s
+  animation-duration: 1s
+  -webkit-animation-fill-mode: both
+  animation-fill-mode: both
+  &.infinite
+    -webkit-animation-iteration-count: infinite
+    animation-iteration-count: infinite
+  &.hinge
+    -webkit-animation-duration: 2s
+    animation-duration: 2s
 
 .correct-hightlight
   background-color: green !important
@@ -243,9 +260,9 @@ button.btn-alternative
     padding: 10px 0
 
 .correct-answer
-  color: red
-.wrong-answer
   color: green
+.wrong-answer
+  color: red
 
 .result-header
   span

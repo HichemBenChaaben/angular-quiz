@@ -106,10 +106,10 @@
     <div ng-if="stats && !modalClosed" class="stats show-stats">
         <div class="overlay" ng-click="closeModal()"></div>
         <div class="content">
-            <h2>Your score</h2>
+            <h2>Score</h2>
             <div class="row">
-                <div><h6>Correct Answers</h6><span>{{numCorrectAnswers}}</span></div>
-                <div><h6>Wrong Answers</h6><span>{{numWrongAnswers}}</span></div>
+                <span class="correct-answer">{{numCorrectAnswers}}</span>
+                <span class="wrong-answer">{{numWrongAnswers}}</span>
                 <div class="col-xs-6">{{points}} Points</div>
                 <progressbar type="success"
                              value="progress"
