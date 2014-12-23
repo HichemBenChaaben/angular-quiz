@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/quiz.css">
         <!-- endbuild -->
+        <base href="/"></base>
     </head>
     <body ng-app="quizApp" ng-controller="MainCtrl">
         <link rel="stylesheet" href="bower_components/highlightjs/styles/{{stylesheet}}.css">
@@ -81,5 +82,8 @@
         <!-- Services are defined here -->
         <script src="scripts/services/jsquestions.js"></script>
         <!-- endbuild -->
+        <!-- Twitter share button -->
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        </script>
     </body>
 </html>

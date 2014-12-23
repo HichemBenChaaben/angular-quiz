@@ -9,7 +9,9 @@
      * Controller of the quizApp
      */
     angular.module('quizApp')
-        .controller('MainCtrl', function($scope) {
+        .controller('MainCtrl', ['$scope', '$state', initQuiz]);
+
+    function initQuiz($scope, $state) {
             $scope.styles = [
                 'arta',
                 'ascetic',
@@ -62,5 +64,9 @@
                 'zenburn'
             ];
             $scope.stylesheet = 'monokai_sublime';
-        });
+            $scope.goto = function (arg) {
+                var arg = arg.toString();
+                $state.go(arg);
+            }
+        };
 })();

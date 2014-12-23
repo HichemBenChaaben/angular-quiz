@@ -29,30 +29,19 @@ angular
             tabReplace: '  ',
             languages: 'javascript'
           });
-
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('home');
         //
         // Now set up the states
         $stateProvider.
-        state('home', {
-            url: '/',
-            controller: 'JsquizCtrl',
-            templateUrl: 'views/javascript/l1.html'
-        }).
-        state('jsquiz', {
-            url: '/',
-            controller: 'MainCtrl',
-            templateUrl: 'views/main.html'
-        })
-        .state('quiz-javascript', {
-            url: 'jsquiz',
-            templateUrl: "views/javascript/l1.html",
-            controller: "JsquizCtrl"
-        })
-        .state('directive-practice', {
-            url: 'dir',
-            templateUrl: 'views/directive-practice.html',
-            controller: 'DirCtrl'
-        });
+            state('home', {
+                url: '/',
+                controller: 'MainCtrl',
+                templateUrl: 'views/main.html'
+            }).
+            state('jsQuiz', {
+                url: '/',
+                controller: 'JsquizCtrl',
+                templateUrl: 'views/javascript/l1.html'
+            });
     });

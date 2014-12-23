@@ -23,7 +23,7 @@
             correctAnswer = false;
 
         $scope.progress = 0;
-        $scope.restart = false;
+        $scope.restart = true;
         $scope.points = 0;
         $scope.qtotal = 0;
         $scope.qindex = qindex;
@@ -33,6 +33,9 @@
         // it will became false later when the slide change
         $scope.answered = false;
         $scope.stats = false;
+
+        // start the controller and get the data
+        getData();
 
         // change appearence of progress bar
         $scope.displayProgress = function() {
@@ -44,7 +47,6 @@
             getData();
             $scope.restart = true;
         };
-
         // Function which return a promess
         function getData() {
             // get the data from the json object
@@ -156,6 +158,9 @@
         // close the modal overlay
         $scope.closeModal = function() {
             $scope.modalClosed = true;
+        };
+        $scope.restartQuiz = function() {
+            $state.go('home');
         };
     }
 })();

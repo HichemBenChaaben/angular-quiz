@@ -1,14 +1,5 @@
 <div ui-view class="container-fluid">
-    <div ng-if="!restart" class="row text-center">
-        <div class="col-lg-12">
-            <h2>Javascript quiz</h2>
-            <p>Let's start a new javascript quiz, this is level one</p>
-            <button class="btn btn-lg btn-primary" ng-click="startQuiz()">
-                Start your javascript quiz
-            </button>
-        </div>
-    </div>
-    <div ng-if="restart" class="slidechange">
+    <div class="slidechange">
         <div class="row">
             <div class="col-xs-12">
                 <div class="row">
@@ -31,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="row text-center center-block" ng-repeat="slide in slides" ng-animate="displayslides">
+        <div class="row text-center center-block" ng-repeat="slide in slides">
             <div class="col-lg-12 bg-primary xs-padding">
                 <div class="row">
                     <div class="col-xs-12">
