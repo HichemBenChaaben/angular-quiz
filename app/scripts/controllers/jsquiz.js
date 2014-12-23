@@ -17,9 +17,6 @@
     // hoisted function which is tie up to the controller
     function getData($scope, $http, $timeout, $interval, jsquestions, $state) {
 
-
-
-
         // Scope vars
         var self = this,
             qindex = 0,
@@ -30,7 +27,8 @@
         $scope.points = 0;
         $scope.qtotal = 0;
         $scope.qindex = qindex;
-
+        $scope.numCorrectAnswers = 0;
+        $scope.numWrongAnswers = 0;
         // when you click on a button answered became true.
         // it will became false later when the slide change
         $scope.answered = false;
@@ -124,8 +122,10 @@
                 // add points to user
                 $scope.displayCorrect($scope.questions[qindex].slide.points);
                 isCorrect = true;
+                $scope.numCorrectAnswers++;
             } else {
                 isCorrect = false;
+                $scope.numWrongAnswers++;
                 $scope.correctTheUser();
             }
 
@@ -153,5 +153,9 @@
             qindex = 0;
             restart = false;
         }
+        // close the modal overlay
+        $scope.closeModal = function() {
+            $scope.modalClosed = true;
+        };
     }
 })();

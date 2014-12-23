@@ -2,8 +2,8 @@
 .header, .marketing, .footer
   padding-left: 15px
   padding-right: 15px
-// Custom page header
 
+// Custom page header
 .header
   border-bottom: 1px solid #e5e5e5
   h3
@@ -15,7 +15,6 @@
 // Make the masthead heading the same height as the navigation
 
 // Custom page footer
-
 .footer
   padding-top: 19px
   color: #777
@@ -60,11 +59,20 @@
 
 // what is happening when user clicks on wrong answer
 .wrong-answer
-  font-weight: bold
-  padding: 20px
-  transition: 0.1s ease-in-out all
-  z-index: 9999
-  opacity: 1
+  .answer
+    font-weight: bold
+    padding: 20px
+    transition: 0.1s ease-in-out all
+    z-index: 999
+    opacity: 1
+    width: 500px
+    top: 40%
+    left: 50%
+    position: absolute
+    transform: translate(-50%, -50%)
+    border-radius: 2px
+    background-color: white
+    border: 3px solid red
   &.ng-enter
     background-color: white
     opacity: 0
@@ -72,7 +80,20 @@
       opacity: 0.3
   &.ng-leave.ng-leave-active
     opacity: 0
-
+  .overlay
+    background-color: white
+    display: block
+    height: 100%
+    left: 0
+    opacity: 0.5
+    overflow: hidden
+    position: absolute
+    top: 0
+    transform: translate(0, 0)
+    width: 100%
+    &:after, &:before
+      display: block
+      content: ' '
 // animation when the slide changes
 .slidechange, .show-stats
   transition: 0.3s ease-in-out all
@@ -194,10 +215,42 @@ button
 
 
 .correctA
-  color: red !important
+  background-color: #5cb85c !important
+  color: white !important
+  border: 1px solid #4cae4c !important
 
-.btn, .btn-default
-  &:focus
-    outline: none !important
-    background-color: none !important
+.correct-hightlight
+  background-color: green !important
+  color: white !important
 
+button.btn-alternative
+  border: 1px solid #adadad
+  color: #333
+  background-color: white
+  display: inline-block
+  font-weight: bold
+  margin: 1px 0
+  padding: 10px 0
+  text-align: center
+  width: 100%
+  &:focus, &:active
+    outline: none
+    padding: 10px 0
+  &:hover
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+    background-color: #e6e6e6
+    outline: none
+    padding: 10px 0
+
+.correct-answer
+  color: red
+.wrong-answer
+  color: green
+
+.result-header
+  span
+    border-right: 1px solid #cdceca
+    padding: 0 15px
+    font-size: 24px
+    &:last-child
+      border: none
