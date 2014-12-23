@@ -30,7 +30,7 @@ angular
             languages: 'javascript'
           });
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('/');
         //
         // Now set up the states
         $stateProvider.
