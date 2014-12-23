@@ -37,8 +37,8 @@ angular
         $stateProvider.
         state('home', {
             url: '/',
-            controller: 'MainCtrl',
-            templateUrl: 'views/main.html'
+            controller: 'JsquizCtrl',
+            templateUrl: 'views/javascript/l1.html'
         }).
         state('jsquiz', {
             url: '/',
