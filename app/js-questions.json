@@ -109,4 +109,58 @@
             "alternative": "Runtime error"
         }]
     }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/7.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/8.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/9.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
 }]

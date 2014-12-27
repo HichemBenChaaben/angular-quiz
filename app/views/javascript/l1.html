@@ -5,19 +5,16 @@
                 <div class="row">
                     <!-- Progress bar indicating where is the user exactly -->
                     <div class="col-xs-8">
-                        <h4>Your score {{points}}</h4>
-                    </div>
-                    <div class="col-xs-4 result-header text-right" ng-if="numCorrectAnswers || numWrongAnswers">
-                        <span class="correct-answer">{{numCorrectAnswers}}</span>
-                        <span class="wrong-answer">{{numWrongAnswers}}</span>
-                    </div>
-                    <div class="col-xs-12">
                         <progressbar type="success"
                                      value="progress"
                                      max="qtotal"
                                      animate="true">
                                         {{points}} pts
                         </progressbar>
+                    </div>
+                    <div class="col-xs-4 result-header text-right" ng-if="numCorrectAnswers || numWrongAnswers">
+                        <span class="correct-answer">{{numCorrectAnswers}}</span>
+                        <span class="wrong-answer">{{numWrongAnswers}}</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +52,7 @@
             <!-- Button group -->
             <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
                 <!-- Group of questions -->
-                <div class="col-lg-12 group-btn-answer">
+                <div class="col-lg-2 group-btn-answer">
                     <button ng-diabled="answered" class="btn-alternative" ng-click="answer($index)" ng-class="{correctA: wrongA && slide.answer==$index}">
                         {{alt.alternative}}
                     </button>
