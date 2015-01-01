@@ -1,166 +1,171 @@
 // IIFE
 (function() {
-    'use strict';
+  'use strict';
 
-    /**
-     * @ngdoc function
-     * @name quizApp.controller:JsquizCtrl
-     * @description
-     * # JsquizCtrl
-     * Controller of the quizApp
-     */
+  /**
+   * @ngdoc function
+   * @name quizApp.controller:JsquizCtrl
+   * @description
+   * # JsquizCtrl
+   * Controller of the quizApp
+   */
 
-    angular.module('quizApp')
-        .controller('JsquizCtrl',
-            ['$scope', '$http', '$timeout', '$interval', 'jsquestions', '$state', getData]);
+  angular.module('quizApp').controller('JsquizCtrl', jquiz);
 
-    // hoisted function which is tie up to the controller
-    function getData($scope, $http, $timeout, $interval, jsquestions, $state) {
+  // annotate
+  jquiz.$inject = ['$scope', '$http', '$timeout', '$interval', 'jsquestions', '$state'];
 
-        // Scope vars
-        var self = this,
-            qindex = 0,
-            correctAnswer = false;
+  // hoisted function which is tie up to the controller
+  function jquiz($scope, $http, $timeout, $interval, jsquestions, $state) {
 
-        $scope.progress = 0;
-        $scope.restart = true;
-        $scope.points = 0;
-        $scope.qtotal = 0;
-        $scope.qindex = qindex;
-        $scope.numCorrectAnswers = 0;
-        $scope.numWrongAnswers = 0;
-        // when you click on a button answered became true.
-        // it will became false later when the slide change
-        $scope.answered = false;
-        $scope.stats = false;
+      // controller varriables
+      var vm = this,
+          qindex = 0,
+          correctAnswer = false;
 
-        // start the controller and get the data
-        getData();
+      vm.sayhello = 'hello man';
 
-        // change appearence of progress bar
-        $scope.displayProgress = function() {
-            $scope.progress = qindex / $scope.qtotal;
-        };
+      vm.progress = 0;
+      vm.restart = true;
+      vm.points = 0;
+      vm.qtotal = 0;
+      vm.qindex = qindex;
+      vm.numCorrectAnswers = 0;
+      vm.numWrongAnswers = 0;
+      // when you click on a button answered became true.
+      // it will became false later when the slide change
+      vm.answered = false;
+      $scope.stats = false;
 
-        // function to start the quiz app
-        $scope.startQuiz = function () {
-            getData();
-            $scope.restart = true;
-        };
-        // Function which return a promess
-        function getData() {
-            // get the data from the json object
-            jsquestions.then(function(res) {
-                $scope.questions = res.data;
-                $scope.slides = $scope.questions[qindex]; // set to the slide by default
-                $scope.qtotal = $scope.questions.length;
-            });
-        }
+      // start the controller and get the data
+      getQuestions();
 
-        // display the badass message
-        $scope.displayCorrect = function(arg) {
-            // todo check why i need to reset stats here
-            $scope.stats = false;
-            // disable the button
-            $scope.answered = true;
-            // the animation happen
-            $scope.correctAnswer = true;
-            // we add points
-            $scope.addpoints(arg);
-            // display progress
-            $scope.displayProgress;
+      // Function which return a promess
+      function getQuestions() {
+          // get the data from the json object
+          jsquestions.then(function(res) {
+              $scope.questions = res.data;
+              $scope.slides = $scope.questions[qindex]; // set to the slide by default
+              $scope.qtotal = res.data.length;
+          });
+      }
 
-            $scope.progress++;
-            // we move to the next slide after 2 seconds
-            $timeout(function() {
-                $scope.correctAnswer = false;
-                $scope.answered = false;
-            }, 2000);
-        };
+      // change appearence of progress bar
+      $scope.displayProgress = function() {
+          $scope.progress = qindex / $scope.qtotal;
+      };
 
-        // add points to the user
-        $scope.addpoints = function (arg) {
-            // convert into int
-            $scope.points += +arg;
-        };
+      // function to start the quiz app
+      $scope.startQuiz = function() {
+          getData();
+          $scope.restart = true;
+      };
 
-        // display the correct answer to the user
-        $scope.correctTheUser = function() {
-            // for test issues
-            $scope.usermessage = 'Wrong';
-            // show parts in the view which have the answer
-            $scope.correctA = true;
-            // add class to an element
-            $scope.wrongA = true;
-        };
+      // display the badass message
+      $scope.displayCorrect = function(arg) {
+          // todo check why i need to reset stats here
+          $scope.stats = false;
+          // disable the button
+          vm.answered = true;
+          // the animation happen
+          $scope.correctAnswer = true;
+          // we add points
+          vm.addpoints(arg);
+          // display progress
+          $scope.displayProgress;
 
-        // Move to the next slide
-        $scope.nextSlide = function() {
-            qindex++;
-            $scope.qindex = qindex;
-            // refresh slides on the scope
-            $scope.slides = $scope.questions[qindex];
-            // hightlight the code displayed
-            hljs.initHighlightingOnLoad();
-            // we reset the buttons for answers
-            $scope.answered = false;
-            // we show the quesions
-            $scope.wrongA = false;
-        };
+          $scope.progress++;
+          // we move to the next slide after 2 seconds
+          $timeout(function() {
+              $scope.correctAnswer = false;
+              $scope.answered = false;
+          }, 2000);
+      };
 
-        // Handle is an answer is correct or wrong
-        $scope.answer = function(arg, element) {
-            // user answered correctly!
-            var isCorrect = false;
+      // add points to the user
+      vm.addpoints = function(arg) {
+          // convert into int
+          vm.points += +arg;
+      };
 
-            if ($scope.answered) {
-                return;
-            }
-            // prevent from clicking multiple times on the answer
-            $scope.answered = true;
+      // display the correct answer to the user
+      $scope.correctTheUser = function() {
+          // for test issues
+          $scope.usermessage = 'Wrong';
+          // show parts in the view which have the answer
+          $scope.correctA = true;
+          // add class to an element
+          $scope.wrongA = true;
+      };
 
-            // if the answer is true
-            if (arg === +$scope.questions[qindex].slide.answer) {
-                // add points to user
-                $scope.displayCorrect($scope.questions[qindex].slide.points);
-                isCorrect = true;
-                $scope.numCorrectAnswers++;
-            } else {
-                isCorrect = false;
-                $scope.numWrongAnswers++;
-                $scope.correctTheUser();
-            }
+      // Move to the next slide
+      $scope.nextSlide = function() {
+          qindex++;
+          $scope.qindex = qindex;
+          // refresh slides on the scope
+          $scope.slides = $scope.questions[qindex];
+          // hightlight the code displayed
+          hljs.initHighlightingOnLoad();
+          // we reset the buttons for answers
+          $scope.answered = false;
+          // we show the quesions
+          $scope.wrongA = false;
+      };
 
-            // check if not excelling the ttal
-            if (($scope.qindex < $scope.qtotal - 1) && isCorrect && !$scope.stats) {
-                $timeout(function() {
-                    // move to the next question
-                    qindex++;
-                    $scope.qindex = qindex;
-                    // refresh slides on the scope
-                    $scope.slides = $scope.questions[qindex];
-                    // hightlight the code displayed
-                    hljs.initHighlightingOnLoad();
-                    $scope.answered = false;
-                }, 2000);
+      // Handle is an answer is correct or wrong
+      $scope.answer = function(arg, element) {
+          // user answered correctly!
+          var isCorrect = false;
 
-            } if ($scope.qindex === $scope.qtotal - 1 && !$scope.stats) {
-                // display stats
-                console.log(' end of the quiz');
-                $scope.stats = true;
-            }
-        };
+          if ($scope.answered) {
+              return;
+          }
+          // prevent from clicking multiple times on the answer
+          $scope.answered = true;
 
-        $scope.resetQuiz = function() {
-            qindex = 0;
-            restart = false;
-        }
-        // close the modal overlay
-        $scope.closeModal = function() {
-            $scope.modalClosed = true;
-        };
-        $scope.restartQuiz = function() {
-            $state.go('home');
-        };
-    }
+          // if the answer is true
+          if (arg === +$scope.questions[qindex].slide.answer) {
+              // add points to user
+              $scope.displayCorrect($scope.questions[qindex].slide.points);
+              isCorrect = true;
+              vm.numCorrectAnswers++;
+          } else {
+              isCorrect = false;
+              vm.numWrongAnswers++;
+              $scope.correctTheUser();
+          }
+
+          // check if not excelling the ttal
+          if (($scope.qindex < $scope.qtotal - 1) && isCorrect && !$scope.stats) {
+              $timeout(function() {
+                  // move to the next question
+                  qindex++;
+                  $scope.qindex = qindex;
+                  // refresh slides on the scope
+                  $scope.slides = $scope.questions[qindex];
+                  // hightlight the code displayed
+                  hljs.initHighlightingOnLoad();
+                  $scope.answered = false;
+              }, 2000);
+
+          }
+          if ($scope.qindex === $scope.qtotal - 1 && !$scope.stats) {
+              // display stats
+              console.log(' end of the quiz');
+              $scope.stats = true;
+          }
+      };
+
+      vm.resetQuiz = function() {
+          qindex = 0;
+          restart = false;
+      }
+      // close the modal overlay
+      vm.closeModal = function() {
+          $scope.modalClosed = true;
+      };
+      vm.restartQuiz = function() {
+          $state.go('home');
+      };
+  }
 })();
