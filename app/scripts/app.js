@@ -35,10 +35,22 @@
             templateUrl: 'views/main.html'
         }).
         state('jsQuiz', {
-            url: '/',
-            controller: 'JsquizCtrl',
-            controllerAs: 'quiz',
-            templateUrl: 'views/javascript/l1.html'
+          url: '/',
+          controller: 'JsquizCtrl',
+          controllerAs: 'quiz',
+          templateUrl: 'views/javascript/l1.html'
+        })
+        .state('quiz', {
+          url: '/quiz',
+          controller: 'QuizCtrl',
+          controllerAs: 'qz',
+          templateUrl: 'views/quiz.html'
+        })
+        .state('forms', {
+          url: '/forms',
+          controller: 'FormsCtrl',
+          controllerAs: 'fm',
+          templateUrl: 'views/forms.html'
         });
       });
 

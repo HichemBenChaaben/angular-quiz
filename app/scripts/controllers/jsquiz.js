@@ -12,7 +12,7 @@
 
   angular.module('quizApp').controller('JsquizCtrl', jquiz);
 
-  // annotate
+  // ng-annotate
   jquiz.$inject = ['$scope', '$http', '$timeout', '$interval', 'jsquestions', '$state'];
 
   // hoisted function which is tie up to the controller
@@ -51,8 +51,8 @@
       }
 
       // change appearence of progress bar
-      $scope.displayProgress = function() {
-          $scope.progress = qindex / $scope.qtotal;
+      vm.displayProgress = function() {
+          vm.progress = qindex / vm.qtotal;
       };
 
       // function to start the quiz app
@@ -90,8 +90,6 @@
 
       // display the correct answer to the user
       $scope.correctTheUser = function() {
-          // for test issues
-          $scope.usermessage = 'Wrong';
           // show parts in the view which have the answer
           $scope.correctA = true;
           // add class to an element
@@ -113,7 +111,7 @@
       };
 
       // Handle is an answer is correct or wrong
-      $scope.answer = function(arg, element) {
+      vm.answer = function(arg, element) {
           // user answered correctly!
           var isCorrect = false;
 
