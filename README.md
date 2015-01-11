@@ -6,4 +6,5 @@
 angular-quiz
 ============
 
-Angular quiz game for developers
+Angular quiz game for people who wana learn javascript more
+
