@@ -1,0 +1,292 @@
+@import animations
+// Everything but the jumbotron gets side spacing for mobile first views
+.header, .marketing, .footer
+  padding-left: 15px
+  padding-right: 15px
+
+// Custom page header
+.header
+  border-bottom: 1px solid #e5e5e5
+  h3
+    margin-top: 0
+    margin-bottom: 0
+    line-height: 40px
+    padding-bottom: 19px
+
+// Custom page footer
+.footer
+  padding-top: 19px
+  color: #777
+  border-top: 1px solid #e5e5e5
+
+// Customize container
+@media (min-width: 768px)
+  .container
+    max-width: 730px
+
+.container-narrow > hr
+  margin: 30px 0
+
+// Main marketing message and sign up button
+
+.jumbotron
+  text-align: center
+  border-bottom: 1px solid #e5e5e5
+  .btn
+    font-size: 21px
+    padding: 14px 24px
+
+// Supporting marketing content
+
+.marketing
+  margin: 40px 0
+  p + h4
+    margin-top: 28px
+
+// Responsive: Portrait tablets and up
+@media screen and (min-width: 768px)
+  // Remove the padding we set earlier
+  .header, .marketing, .footer
+    padding-left: 0
+    padding-right: 0
+  // Space out the masthead
+  .header
+    margin-bottom: 30px
+  // Remove the bottom border on the jumbotron for visual effect
+  .jumbotron
+    border-bottom: 0
+
+// what is happening when user clicks on wrong answer
+.wrong-answer
+  .answer
+    font-weight: bold
+    padding: 20px
+    transition: 0.1s ease-in-out all
+    z-index: 999
+    opacity: 1
+    width: 500px
+    top: 10%
+    left: 50%
+    position: absolute
+    transform: translate(-50%, -50%)
+    border-radius: 2px
+    background-color: white
+    border: 5px solid rgba(229,65,48,0.4)
+    .btn
+      border-radius: 0
+      padding: 10px 20px
+  &.ng-enter
+    background-color: white
+    opacity: 0
+    &.ng-enter-active
+      opacity: 0.3
+  &.ng-leave.ng-leave-active
+    opacity: 0
+  .overlay
+    background-color: gray
+    display: block
+    height: 100%
+    left: 0
+    opacity: 0.2
+    overflow: hidden
+    position: absolute
+    z-index: 22
+    top: 0
+    transform: translate(0, 0)
+    width: 100%
+    &:after, &:before
+      display: block
+      content: ' '
+// animation when the slide changes
+.slidechange, .show-stats
+  transition: 0.3s ease-in-out all
+  opacity: 1
+  &.ng-enter
+    opacity: 0
+    &.ng-enter-active
+      opacity: 0.3
+      transition: 0.2s ease-in-out all
+  &.ng-leave.ng-leave-active
+    opacity: 0
+
+
+// Animate the user message, the badass effect !
+.usermessage
+  -webkit-transform: scale(1.3)
+  border-radius: 2px
+  color: white
+  float: left
+  font-weight: bold
+  left: 50%
+  overflow: hidden
+  padding: 20px
+  position: absolute
+  text-align: center
+  top: 50%
+  transform: translate(-50%, -50%)
+  transition: 0.3s ease-in-out all
+  z-index: 9999
+  &.ng-enter
+    -webkit-transition: all 0.3s ease-in-out
+    -webkit-transform: scale(10.3)
+    -moz-transform: scale(10.3)
+    opacity: 1
+    &.ng-enter-active
+      opacity: 0.3
+  &.ng-leave.ng-leave-active
+    opacity: 0
+    transition: 0.4s ease-in-out all
+  .overlay
+    background-color: white
+    display: block
+    height: 100%
+    left: 0
+    opacity: 0.5
+    overflow: hidden
+    position: absolute
+    top: 0
+    transform: translate(0, 0)
+    width: 100%
+    &:after, &:before
+      display: block
+      content: ' '
+
+// starting animations for enter
+
+// helper paddings
+
+.xs-padding
+  padding: 5px
+
+.xm-padding
+  padding: 15px
+
+.xl-padding
+  padding: 25px
+
+pre, .navbar
+  border-radius: 0
+
+// firefox fix
+code.hljs
+  text-align: left
+  font-size: 14px
+
+.group-btn-answer button
+  background-color: #f5f5f5
+  border: 1px solid #ccc
+  border-radius: 0
+
+$color--blue-fiddle: #4679bd
+
+.container, .container-fluid
+  background-color: white
+
+// disabled buttons styling
+button
+  &:disabled
+    border: 0 !important
+    outline: 0 !important
+
+.stats
+  // display an overlay and center the shit in the middle
+  // of the screen
+  .overlay
+    background-color: white
+    display: block
+    height: 100%
+    left: 0
+    opacity: 0.4
+    overflow: hidden
+    position: absolute
+    top: 0
+    transform: translate(0, 0)
+    width: 100%
+    &:after
+      display: block
+      content: ' '
+  .content
+    background-color: white
+    border: 2px solid blue
+    left: 50%
+    padding: 35px
+    position: absolute
+    text-align: center
+    top: 25%
+    transform: translate(-50%, -60%)
+
+
+.correctA
+  background-color: #5cb85c !important
+  color: white !important
+  border: 1px solid #4cae4c !important
+  animation-name: shake !important
+  animation-duration: 1s
+  -webkit-animation-fill-mode: both
+  animation-fill-mode: both
+  &.infinite
+    -webkit-animation-iteration-count: infinite
+    animation-iteration-count: infinite
+  &.hinge
+    -webkit-animation-duration: 2s
+    animation-duration: 2s
+
+.correct-hightlight
+  background-color: green !important
+  color: white !important
+
+button.btn-alternative
+  border: 1px solid #adadad
+  color: #333
+  background-color: white
+  display: inline-block
+  font-weight: bold
+  margin: 1px 0
+  padding: 10px 0
+  text-align: center
+  width: 100%
+  &:focus, &:active
+    outline: none
+    padding: 10px 0
+  &:hover
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+    background-color: #e6e6e6
+    outline: none
+    padding: 10px 0
+
+.correct-answer
+  color: green
+.wrong-answer
+  color: red
+
+.result-header
+  span
+    border-right: 1px solid #cdceca
+    padding: 0 15px
+    font-size: 24px
+    &:last-child
+      border: none
+
+
+.displayslides
+  &.ng-enter
+    transition: all 0.3s ease-in-out
+    transform: scale(10.3)
+    transform: scale(10.3)
+    opacity: 1
+    &.ng-enter-active
+      opacity: 0.3
+  &.ng-leave.ng-leave-active
+    opacity: 0
+    border: 4px solid red
+    transition: 0.4s ease-in-out all
+  &.ng-move
+    transform: scale(1.3)
+  &.ng-move-active
+    transform: scale(6.3)
+
+pre
+  float: left
+  display: block
+  width: 100%
+

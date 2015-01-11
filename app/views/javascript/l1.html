@@ -1,45 +1,124 @@
-<div ui-view class="container">
-    <div ng-if="!restart">
-        <h2>Start a javascript quiz</h2>
-        <p>Let's start a new javascript quiz, this is level one</p>
-        <button class="btn btn-default" ng-click="startQuiz()">Start your javascript quiz</button>
-    </div>
-    <div ng-if="restart">
+<!-- controller as quiz -->
+<div ui-view class="container-fluid">
+  <div class="slidechange">
+    <div class="row">
+      <div class="col-xs-12">
         <div class="row">
-            <div class="col-lg-12">Your score {{points}}</div>
-            <!-- Progress bar indicating where is the user exactly -->
-
-            <div class="col-lg-12">
-                <h2>Progress</h2>
-                <progressbar value="points" max="200" animate="true">{{points}} pts</progressbar>
-            </div>
+          <!-- Progress bar indicating where is the user exactly -->
+          <div class="col-xs-8">
+            <progressbar type="success"
+                         value="qindex"
+                         max="9"
+                         animate="true"
+                         class="progress-striped active">
+             <span>{{quiz.points}} pts</span>
+             <span> / Your progress </span>
+            </progressbar>
+          </div>
+          <div class="col-xs-4 result-header text-right"
+               ng-if="quiz.numCorrectAnswers || quiz.numWrongAnswers">
+            <span class="correct-answer">{{quiz.numCorrectAnswers}}</span>
+            <span class="wrong-answer">{{quiz.numWrongAnswers}}</span>
+          </div>
         </div>
-        <div class="row" ng-repeat="slide in slides">
-            <h3>{{slide.question}}</h3>
-            <!-- use hightlight js-->
-            <pre>
-                <code class="javascript">{{slide.snippet}}</code>
-            </pre>
-            <!-- Button group -->
-            <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
-                <div class="col-lg-12">
-                    <button class="btn btn-default" ng-click="answer($index)">
-                        {{alt.alternative}}
-                    </button>
-                </div>
-            </div>
-            the answer is -> {{slide.answer}}
-            <div ng-if="correctAnswer">
-                <p>
-                    ++ {{slide.points}}, {{usermessage}}
-                </p>
-            </div>
-        </div>
-        <hr/>
-        <div ng-if="usermessage" class="say-correct">
-            <div class="reveal-animation">
-                <p>{{usermessage.message}}</p>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row text-center center-block" ng-repeat="slide in slides">
+      <div class="col-lg-12 bg-primary xs-padding">
+        <!-- Title or question -->
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>
+              <span>{{qindex+1}}/{{qtotal}}</span>
+              <span class="glyphicon glyphicon-question"></span>
+              <span>{{slide.question}}</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <!-- use hightlight js-->
+      <div hljs no-escape include="'views/'+slide.snippetUrl" language="javascript">
+        <div ng-include="'views/'+slide.snippetUrl"></div>
+      </div>
+      <!-- Choosing the style to include in our editor
+      <form>
+        <select ng-model="stylesheet" class="form-control">
+          <option ng-repeat="stylesheet in styles" value="{{stylesheet}}">
+            {{stylesheet}}
+          </option>
+        </select>
+      </form>
+      End choosing editor style -->
+      <!-- Button group -->
+      <div class="row" ng-if="slide.alt.length > 0" ng-repeat="alt in slide.alt track by $index">
+        <!-- Group of questions -->
+        <div class="col-lg-12 group-btn-answer">
+          <button class="btn-alternative" ng-click="quiz.answer($index)" ng-class="{correctA: wrongA && slide.answer==$index}">
+            {{alt.alternative}}
+          </button>
+        </div>
+        <!-- group of answers -->
+        <div ng-if="wrongA && slide.answer==$index" class="wrong-answer">
+          <div class="answer">
+            <h3>{{alt.alternative}}</h3>
+            <hr/>
+            <button class="btn btn-primary" ng-click="nextSlide()">
+              Continue
+            </button>
+          </div>
+          <div class="overlay">&nbsp;</div>
+        </div>
+      </div>
+      <!-- Display the badass message -->
+      <div ng-if="correctAnswer" ng-class="correctAnswer?correct:incorrect" ng-animate="usermessage" class="usermessage correct">
+        <div clas="overlay">&nbsp;</div>
+        <p>
+          <span class="glyphicon glyphicon-ok-circle"></span>
+          <span>Correct! <b>+{{slide.points}} points!</b></span>
+        </p>
+      </div>
+    </div>
+    <hr/>
+    <!-- hidden animation to say correct-->
+    <div ng-if="usermessage" class="say-correct">
+      <div class="reveal-animation">
+        <p>{{usermessage.message}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- statistics at the end  -->
+  <div ng-if="stats && !modalClosed" class="stats show-stats">
+    <div class="overlay" ng-click="quiz.closeModal()"></div>
+    <div class="content">
+      <h2>Score</h2>
+      <div class="row">
+        <span class="correct-answer">{{quiz.numCorrectAnswers}}</span>
+        <span class="wrong-answer">{{quiz.numWrongAnswers}}</span>
+        <progressbar type="success" value="progress" max="qtotal" animate="true">
+          {{points}} Pts
+        </progressbar>
+        <div class="col-xs-6">{{quiz.answeredQuestions}}</div>
+      </div>
+      <!-- Points scored -->
+      <div class="row">
+        <div class="col-xs-6">Score</div>
+        <div class="col-xs-6">{{quiz.points}}</div>
+      </div>
+
+      <!-- Share buttons -->
+      <div><h2>Share on social media</h2></div>
+      <div class="row">
+        <div class="col-xs-12" ng-include="'views/partials/share.html'"></div>
+      </div>
+      <hr/>
+      <div class="row left-block">
+        <div class="col-xs-12">
+          <button class="btn btn-default" ng-click="quiz.restartQuiz()">
+          <span class="glyphicon glyphicon-remove-circle"></span>
+          <span>Restart the quiz</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -18,7 +18,7 @@
                 return data.slides;
             })
             .error(function() {
-                alert('error in getting the file');
+                console.log('error getting the file');
             });
     };
 })();

@@ -1,0 +1,31 @@
+<!-- controller as qz -->
+<div ng-hide="qz.initiate">
+  <button class="btn btn-large" ng-click="qz.startQuiz()">Start the quiz</button>
+</div>
+
+<div ng-show="qz.initiate" class="container-fluid" ng-repeat="slide in qz.slides">
+  <div class="row">
+    <div class="col-xs-12">
+      <span>Question number</span>
+      <span>
+        <h2>{{slide.question}}</h2>
+      </span>
+    </div>
+  </div>
+  <!-- code snippet -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div hljs no-escape include="'views/'+slide.snippetUrl" language="javascript">
+        <div ng-include="'views/'+slide.snippetUrl"></div>
+      </div>
+    </div>
+  </div>
+  <!--- alternatives -->
+  <div class="row">
+    <div class="col-xs-12" ng-repeat="alt in slide.alt track by $index">
+      <button class="btn btn-large btn-default" ng-click="qz.answer($index, slide.answer)">
+        {{alt.alternative}}
+      </button>
+    </div>
+  </div>
+</div>

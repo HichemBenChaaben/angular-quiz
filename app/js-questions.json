@@ -1,52 +1,166 @@
 [{
     "slide": {
-        "question": "This is question 1",
+        "question": "What is the output of the console.log()?",
         "snippet": "function()\n{\n var a = 10;if(a > 5) {\na = 7;}alert(a); if(a > 5) {\na = 7;}alert(a); }",
+        "snippetUrl": "snippets/l1/1.html",
         "tip": "The answer might be the 3, bet on it negga",
         "points": "10",
-        "answer": "1",
+        "answer": "0",
         "alt": [{
-            "alternative": " alter 1 qustion 1"
+            "alternative": "False, False"
         }, {
-            "alternative": " alter 2 question 1"
+            "alternative": "False, True"
         }, {
-            "alternative": " alter 3 question 1"
+            "alternative": "Runtime error"
         }, {
-            "alternative": " alter 4 question 1"
+            "alternative": "True, True"
         }]
     }
 }, {
     "slide": {
-        "question": "This is question 2",
-        "snippet": " <p class=\"shitty-class shitty-code\">lorem powq dpouqw dqwj dpqwpd poq</p>",
-        "tip": "The answer might be the 3, bet on it negga",
-        "points": "10",
-        "answer": "2",
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/2.html",
+        "tip": "// 1 -- 1",
+        "points": "20",
+        "answer": "1",
         "alt": [{
-            "alternative": " alter 1 qustion 2"
+            "alternative": "\"11\""
         }, {
-            "alternative": " alter 2 question 2"
+            "alternative": "2"
         }, {
-            "alternative": " alter 3 question 2"
+            "alternative": "Runtime error"
         }, {
-            "alternative": " alter 4 question 2"
+            "alternative": "0"
+        },
+        {
+            "alternative": "NaN (Not a number)"
         }]
     }
 }, {
     "slide": {
-        "question": "this is question 3",
-        "snippet": " <p class=\"shitty-class shitty-code\">qwdoi q woidh oqwdouqw gdougqw odg qod</p>",
+        "question": "What is the output of the console.log()?",
+        "snippet": "init: function() {this.main_cat = el.paaForm.find(\"#id_category\");this.overlay_block = $(\".u-paa__overlay-layer\");this.submit_btn = $(\"#paa-submit\");this.submit_btn_text = $(\"#paa-submit\").val();this.server_error_block = $(\"#server-error-block\");this.ajax_loader = $(\"#loader\");this.ajax_no_loader = $(\"#no-loader\");this.phoneInput = $(\"#id_mobile_number\");this.charity_switch = $(\"input[name=price_type]\");this.priceField = $(\"#id_price\");",
+        "snippetUrl": "snippets/l1/3.html",
         "tip": "The answer might be the 3, bet on it negga",
         "points": "10",
         "answer": "1",
         "alt": [{
-            "alternative": " alter 1 qustion 3"
+            "alternative": "False"
         }, {
-            "alternative": " alter 2 question 3"
+            "alternative": "True"
         }, {
-            "alternative": " alter 3 question 3"
+            "alternative": "NaN"
         }, {
-            "alternative": " alter 4 question 3"
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/4.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+},  {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/5.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/6.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/7.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/8.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
+        }]
+    }
+}, {
+    "slide": {
+        "question": "What is the output of the console.log()?",
+        "snippet": "",
+        "snippetUrl": "snippets/l1/9.html",
+        "tip": "The answer might be the 3, bet on it negga",
+        "points": "10",
+        "answer": "1",
+        "alt": [{
+            "alternative": "False"
+        }, {
+            "alternative": "True"
+        }, {
+            "alternative": "NaN"
+        }, {
+            "alternative": "Runtime error"
         }]
     }
 }]
